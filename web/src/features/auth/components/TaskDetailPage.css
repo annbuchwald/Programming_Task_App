@@ -1,0 +1,216 @@
+.task-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.back-button-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    left: calc(100% + 15px); /* Zmienione z transform/left na pozycję po prawej */
+    top: 50%;
+    transform: translateY(-50%); /* Centrowanie w pionie */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.back-button-tooltip::before {
+    content: '';
+    position: absolute;
+    left: -6px; /* Zmienione położenie strzałki */
+    top: 50%;
+    transform: translateY(-50%); /* Centrowanie w pionie */
+    border-width: 6px 6px 6px 0; /* Zmieniony kształt strzałki */
+    border-style: solid;
+    border-color: transparent #333 transparent transparent; /* Zmieniony kierunek strzałki */
+}
+
+/* Reszta styli pozostaje bez zmian */
+.back-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.back-button:hover {
+    background-color: #f0f0f0;
+}
+
+.back-button:hover .back-button-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-button svg {
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover svg {
+    color: #333;
+}
+.task-detail-container {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    height: calc(100vh - 64px);
+    background-color: #f8f9fa;
+}
+
+.task-description-panel {
+    padding: 2rem;
+    overflow-y: auto;
+    border-right: 1px solid #dee2e6;
+    background-color: white;
+}
+
+.task-description-panel h1 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #495057;
+    margin-bottom: 2rem;
+}
+
+.description pre {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+.description code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    background-color: #f8f9fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+}
+
+.test-cases {
+    margin-top: 2rem;
+}
+
+.test-cases h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.test-case {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.test-input, .test-output {
+    margin: 0.5rem 0;
+}
+
+.editor-panel {
+    height: 100%;
+    background-color: #1e1e1e;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #dc3545;
+    font-size: 1.2rem;
+}
+
+.task-header h1 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.task-description-panel {
+    padding: 1.5rem 2rem;
+}
+
+.submit-section {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    color: white;
+}
+
+.submit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+.submission-results {
+    margin-top: 1rem;
+}
+
+.result-success {
+    color: #4caf50;
+}
+
+.result-error {
+    color: #f44336;
+}
+
+.test-result.correct {
+    border-left: 4px solid #28a745;
+}
+.test-result.incorrect {
+    border-left: 4px solid #dc3545;
+}
+
