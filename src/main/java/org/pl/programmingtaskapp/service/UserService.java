@@ -51,7 +51,8 @@ public class UserService implements UserDetailsService {
         user.setEmailConfirmed(false);
         user.setPassword(encoder.encode(user.getPassword()));
         user.setEmailConfirmationCode(randomGeneratorService.generateRandomAlphaNumeric(confirmationCodeLength));
-        try {
+        // Commented out email confirmation sending
+        /*try {
             emailService.sendEmail(EmailDetails.builder()
                             .recipient(user.getEmail())
                             .subject("Email confirmation")
@@ -59,7 +60,7 @@ public class UserService implements UserDetailsService {
                     .build());
         } catch (Exception e) {
             throw new RuntimeException("Error sending email!");
-        }
+        }*/
         return repository.save(user);
     }
 
